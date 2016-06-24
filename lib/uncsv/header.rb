@@ -13,7 +13,7 @@ class Uncsv
 
     def to_a
       @array ||= begin
-        headers = @headers
+        headers = square(@headers)
         headers = normalize(headers) if @config.normalize_headers
         headers = expand(headers) if @config.expand_headers
         combined = combine(headers)
@@ -29,7 +29,8 @@ class Uncsv
         headers = config.header_rows.map { |i| rows[i] }
         OpenStruct.new(
           header: new(headers, config),
-          index: index
+          index: index,
+          rows: rows
         )
       end
 
@@ -101,6 +102,11 @@ class Uncsv
         key.gsub!(/^#{escaped_separator}|#{escaped_separator}$/, '')
       end
       key.downcase
+    end
+
+    def square(headers)
+      length = headers.map(&:size).max
+      headers.map { |h| h.fill(nil, h.size, length - h.size) }
     end
   end
 end

@@ -94,4 +94,18 @@ RSpec.describe Uncsv::Header do
     parsed = described_class.parse!(csv, config)
     expect(parsed.index).to eq(3)
   end
+
+  it 'returns parsed rows' do
+    csv = CSV.new("skipped,stuff\n\ntest,this")
+    config = Uncsv::Config.new(header_rows: 2)
+    parsed = described_class.parse!(csv, config)
+    expect(parsed.rows).to eq([%w(skipped stuff), [], %w(test this)])
+  end
+
+  it 'squares header rows when expanding' do
+    csv = CSV.new("short,row\nthis,is,a,long,row")
+    config = Uncsv::Config.new(header_rows: [0, 1], expand_headers: true)
+    header = described_class.parse!(csv, config).header
+    expect(header.to_a).to eq(%w(short.this row.is row.a row.long row.row))
+  end
 end

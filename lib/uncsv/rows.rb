@@ -18,10 +18,6 @@ class Uncsv
       end.each(&block)
     end
 
-    def to_a
-      each.to_a
-    end
-
     private
 
     def should_skip?(fields, index)

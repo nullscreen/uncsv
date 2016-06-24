@@ -23,7 +23,11 @@ class Uncsv
     end
 
     def csv_opts
-      @csv_opts = Hash[CSV_OPTS.map { |k| [k, public_send(k)] }]
+      Hash[
+        CSV_OPTS
+          .map { |k| [k, public_send(k)] }
+          .select { |o| !o[1].nil? }
+      ]
     end
 
     private
