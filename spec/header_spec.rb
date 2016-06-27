@@ -108,4 +108,14 @@ RSpec.describe Uncsv::Header do
     header = described_class.parse!(csv, config).header
     expect(header.to_a).to eq(%w(short.this row.is row.a row.long row.row))
   end
+
+  it 'works with empty headers' do
+    csv = CSV.new("A,,C,\nE,,,H")
+    config = Uncsv::Config.new(
+      header_rows: [0, 1],
+      normalize_headers: true
+    )
+    header = described_class.parse!(csv, config).header
+    expect(header.to_a).to eq(['a.e', nil, 'c', 'h'])
+  end
 end

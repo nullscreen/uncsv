@@ -54,7 +54,6 @@ class Uncsv
     end
 
     def expand(headers)
-      return headers unless @config.expand_headers
       headers.map do |header|
         last = nil
         header.map do |key|
@@ -91,6 +90,7 @@ class Uncsv
     end
 
     def normalize_key(key)
+      return nil if key.nil?
       normalize_headers = @config.normalize_headers
       separator = normalize_headers.is_a?(String) ? normalize_headers : '_'
 
