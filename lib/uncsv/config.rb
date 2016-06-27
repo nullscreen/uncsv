@@ -15,6 +15,7 @@ class Uncsv
     end
 
     def skip_rows=(rows)
+      rows = [rows] unless rows.is_a?(Array)
       @skip_rows = Hash[rows.map { |r| [r, true] }]
     end
 
@@ -29,6 +30,12 @@ class Uncsv
           .map { |k| [k, public_send(k)] }
           .select { |o| !o[1].nil? }
       ]
+    end
+
+    def expanded_headers
+      return header_rows if expand_headers == true
+      return [] if expand_headers == false
+      expand_headers
     end
 
     private

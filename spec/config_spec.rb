@@ -29,4 +29,19 @@ RSpec.describe Uncsv::Config do
     config = described_class.new(col_sep: "\t")
     expect(config.csv_opts).to eq(col_sep: "\t")
   end
+
+  it 'gets empty expanded_headers if false' do
+    config = described_class.new(expand_headers: false)
+    expect(config.expanded_headers).to eq([])
+  end
+
+  it 'gets all expanded_headers if false' do
+    config = described_class.new(header_rows: [1, 2], expand_headers: true)
+    expect(config.expanded_headers).to eq([1, 2])
+  end
+
+  it 'gets partial expanded_headers' do
+    config = described_class.new(header_rows: [1, 2], expand_headers: [2])
+    expect(config.expanded_headers).to eq([2])
+  end
 end

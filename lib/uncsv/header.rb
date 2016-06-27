@@ -14,7 +14,7 @@ class Uncsv
       @array ||= begin
         headers = square(@headers)
         headers = normalize(headers) if @config.normalize_headers
-        headers = expand(headers) if @config.expand_headers
+        headers = expand(headers)
         combined = combine(headers)
         combined = unique(combined) if @config.unique_headers
         combined
@@ -54,7 +54,8 @@ class Uncsv
     end
 
     def expand(headers)
-      headers.map do |header|
+      headers.each_with_index.map do |header, index|
+        next header unless @config.expanded_headers.include?(index)
         last = nil
         header.map do |key|
           key ? last = key : last

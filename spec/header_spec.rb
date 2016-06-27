@@ -59,6 +59,13 @@ RSpec.describe Uncsv::Header do
     expect(header.to_a).to eq(%w(foo.this foo.is bar.a bar.test))
   end
 
+  it 'can expand some header rows' do
+    csv = CSV.new("expand,,these,\ndont,expand,,bottom")
+    config = Uncsv::Config.new(header_rows: [0, 1], expand_headers: [0])
+    header = described_class.parse!(csv, config).header
+    expect(header.to_a).to eq(%w(expand.dont expand.expand these these.bottom))
+  end
+
   it 'uniques duplicate header names' do
     csv = CSV.new("foo,,bar,\na,b,b,b")
     config = Uncsv::Config.new(

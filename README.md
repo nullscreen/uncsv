@@ -76,7 +76,8 @@ end
 
 - `:expand_headers`: Default `false`. If set to `true`, blank header row cells
   will assume the header of the row to their left. This is useful for
-  heirarchical headers where not all the header cells are filled in.
+  heirarchical headers where not all the header cells are filled in. If set to
+  an array of header indexes, only the specified headers will be expanded.
 - `:header_rows`: Default `[]`. Can be set to either a single row index or an
   array of row indexes. For example, it could be set to `0` to indicate a
   header in the first row. If set to an array of indexes (`[1,2]`), the header
