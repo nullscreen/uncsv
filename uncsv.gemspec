@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors = ['Justin Howard']
   spec.email = ['jmhoward0@gmail.com']
 
-  spec.summary = 'Parse unruly CSVs'
+  spec.summary = 'A parser for unruly CSVs'
   spec.homepage = 'https://bitbucket.com/machinima-dev/uncsv'
 
   spec.files = `git ls-files -z`
