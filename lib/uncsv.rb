@@ -18,10 +18,16 @@ class Uncsv
   end
 
   def each(&block)
-    Rows.new(@csv, @config).each(&block)
+    rows.each(&block)
   end
 
-  def to_a
-    each.to_a
+  def header
+    rows.header
+  end
+
+  private
+
+  def rows
+    @rows ||= Rows.new(@csv, @config)
   end
 end

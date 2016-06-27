@@ -49,4 +49,15 @@ RSpec.describe Uncsv do
     end
     expect(csv.to_a.first['jill']).to eq('hill')
   end
+
+  it 'can map to a CSV column' do
+    csv = described_class.new("A,B\n1,2", header_rows: 0)
+    expect(csv.map { |r| r['B'] }).to eq(['2'])
+  end
+
+  it 'can get the header' do
+    csv = described_class.new("Z,Y\n1,2", header_rows: 0)
+    expect(csv.header).to eq(%w(Z Y))
+    expect(csv.to_a.map(&:fields)).to eq([%w(1 2)])
+  end
 end
