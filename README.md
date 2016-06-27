@@ -90,7 +90,7 @@ end
   will be normalized. The text will be lowercased, and non-alphanumeric
   characters will be replaced with underscores (`_`). If set to a string,
   those characters will be replaced with the string instead.
-- `:skip_lines`: Default `[]`. If set to an array of row indexes, those rows
+- `:skip_rows`: Default `[]`. If set to an array of row indexes, those rows
   will be skipped. This option does not apply to header rows.
 - `:unique_headers`: Default `false`. If set to `true`, headers will be forced
   to be unique by appending numbers to duplicates. For example, if two header

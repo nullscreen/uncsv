@@ -7,8 +7,8 @@ class Uncsv
     ].freeze
 
     attr_accessor :expand_headers, :header_rows, :header_separator,
-      :normalize_headers, :skip_blanks, :skip_lines, :skip_rows,
-      :unique_headers, *CSV_OPTS
+      :normalize_headers, :skip_blanks, :skip_rows, :unique_headers,
+      *CSV_OPTS
 
     def initialize(opts = {})
       default_opts.merge(opts).each { |k, v| public_send("#{k}=", v) }
