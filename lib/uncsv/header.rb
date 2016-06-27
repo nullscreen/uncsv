@@ -94,7 +94,7 @@ class Uncsv
       normalize_headers = @config.normalize_headers
       separator = normalize_headers.is_a?(String) ? normalize_headers : '_'
 
-      key = key.gsub(/[^a-z0-9\-_]+/i, separator)
+      key = key.gsub(/[^a-z0-9_]+/i, separator)
       unless separator.empty?
         escaped_separator = Regexp.escape(separator)
         key.gsub!(/#{escaped_separator}{2,}/, separator)
