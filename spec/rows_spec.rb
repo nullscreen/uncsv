@@ -23,4 +23,20 @@ RSpec.describe Uncsv::Rows do
     rows = described_class.new(csv, config)
     expect(rows.each.map(&:fields)).to eq([%w(1 2), %w(5 6)])
   end
+
+  it 'can get results multiple times' do
+    csv = CSV.new('hello,world')
+    config = Uncsv::Config.new
+    rows = described_class.new(csv, config)
+    rows.each.to_a
+    expect(rows.each.map(&:fields)).to eq([%w(hello world)])
+  end
+
+  it 'can get the header and iterate' do
+    csv = CSV.new("hello,world\ngoodbye,world")
+    config = Uncsv::Config.new(header_rows: 0)
+    rows = described_class.new(csv, config)
+    expect(rows.header.to_a).to eq(%w(hello world))
+    expect(rows.each.map(&:fields)).to eq([%w(goodbye world)])
+  end
 end

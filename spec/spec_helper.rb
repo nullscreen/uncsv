@@ -1,4 +1,7 @@
 require 'uncsv'
+# pp crashes if required (by rspec) after fakefs
+require 'pp'
+require 'fakefs/spec_helpers'
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
@@ -10,4 +13,6 @@ RSpec.configure do |config|
   end
 
   config.disable_monkey_patching!
+
+  config.include FakeFS::SpecHelpers
 end

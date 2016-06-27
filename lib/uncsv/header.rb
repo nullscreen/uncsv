@@ -1,10 +1,9 @@
-require 'ostruct'
-
 class Uncsv
   class Header
     def initialize(headers, config)
       @headers = headers
       @config = config
+      @array = nil
     end
 
     def each(&block)

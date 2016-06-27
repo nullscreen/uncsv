@@ -5,17 +5,23 @@ class Uncsv
     def initialize(csv, config)
       @csv = csv
       @config = config
+      @started = false
+      @parsed = nil
     end
 
     def each(&block)
-      parsed = Header.parse!(@csv, @config)
+      start
       index = parsed.index
       Enumerator.new do |yielder|
         loop do
-          break unless yield_row(yielder, parsed, index)
+          break unless yield_row(yielder, index)
           index += 1
         end
       end.each(&block)
+    end
+
+    def header
+      parsed.header.to_a
     end
 
     private
@@ -26,13 +32,24 @@ class Uncsv
       false
     end
 
-    def yield_row(yielder, parsed, index)
+    def yield_row(yielder, index)
       fields = @csv.shift
       return false unless fields
-      unless should_skip?(fields, index)
-        yielder << CSV::Row.new(parsed.header.to_a, fields)
-      end
+      yielder << CSV::Row.new(header, fields) unless should_skip?(fields, index)
       true
+    end
+
+    def start
+      if @started
+        @parsed = nil
+        @csv.rewind
+      else
+        @started = true
+      end
+    end
+
+    def parsed
+      @parsed ||= Header.parse!(@csv, @config)
     end
   end
 end

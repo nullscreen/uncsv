@@ -1,3 +1,5 @@
+require 'ostruct'
+
 class Uncsv
   class Config
     CSV_OPTS = [

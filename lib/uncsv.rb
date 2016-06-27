@@ -7,8 +7,8 @@ require 'csv'
 class Uncsv
   def initialize(csv, opts = {})
     @config = Config.new(opts)
-    @csv = CSV.new(csv, @config.csv_opts)
     yield @config if block_given?
+    @csv = CSV.new(csv, @config.csv_opts)
   end
 
   def self.open(filename, opts = {}, &block)
@@ -17,5 +17,9 @@ class Uncsv
 
   def each(&block)
     Rows.new(@csv, @config).each(&block)
+  end
+
+  def to_a
+    each.to_a
   end
 end
