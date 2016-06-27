@@ -3,8 +3,7 @@ require 'ostruct'
 class Uncsv
   class Config
     CSV_OPTS = [
-      :col_sep, :row_sep, :quote_char, :field_size_limit, :conveters,
-      :header_converters
+      :col_sep, :row_sep, :quote_char, :field_size_limit, :converters
     ].freeze
 
     attr_accessor :expand_headers, :header_rows, :header_separator,
