@@ -90,6 +90,8 @@ end
   will be normalized. The text will be lowercased, and non-alphanumeric
   characters will be replaced with underscores (`_`). If set to a string,
   those characters will be replaced with the string instead.
+- `:nil_empty`: Default `true`. If `true`, empty cells will be set to `nil`,
+  otherwise, they are set to an empty string.
 - `:skip_rows`: Default `[]`. If set to an array of row indexes, those rows
   will be skipped. This option does not apply to header rows.
 - `:unique_headers`: Default `false`. If set to `true`, headers will be forced

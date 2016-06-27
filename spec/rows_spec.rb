@@ -48,4 +48,11 @@ RSpec.describe Uncsv::Rows do
     enum.map(&:fields)
     expect(enum.map(&:fields)).to eq([%w(1 2), %w(3 4)])
   end
+
+  it 'can stringify nils' do
+    csv = CSV.new('1,,3,')
+    config = Uncsv::Config.new(nil_empty: false)
+    rows = described_class.new(csv, config)
+    expect(rows.each.map(&:fields)).to eq([['1', '', '3', '']])
+  end
 end

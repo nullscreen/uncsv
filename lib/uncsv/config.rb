@@ -7,7 +7,7 @@ class Uncsv
     ].freeze
 
     attr_accessor :expand_headers, :header_rows, :header_separator,
-      :normalize_headers, :skip_blanks, :skip_rows, :unique_headers,
+      :nil_empty, :normalize_headers, :skip_blanks, :skip_rows, :unique_headers,
       *CSV_OPTS
 
     def initialize(opts = {})
@@ -38,6 +38,7 @@ class Uncsv
         expand_headers: false,
         header_rows: [],
         header_separator: '.',
+        nil_empty: true,
         normalize_headers: false,
         skip_rows: {},
         skip_blanks: false,
