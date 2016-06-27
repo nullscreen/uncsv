@@ -39,4 +39,13 @@ RSpec.describe Uncsv::Rows do
     expect(rows.header.to_a).to eq(%w(hello world))
     expect(rows.each.map(&:fields)).to eq([%w(goodbye world)])
   end
+
+  it 'can reset an Enumerable' do
+    csv = CSV.new("foo,bar\n1,2\n3,4")
+    config = Uncsv::Config.new(header_rows: 0)
+    rows = described_class.new(csv, config)
+    enum = rows.each
+    enum.map(&:fields)
+    expect(enum.map(&:fields)).to eq([%w(1 2), %w(3 4)])
+  end
 end

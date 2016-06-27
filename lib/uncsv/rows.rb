@@ -10,9 +10,9 @@ class Uncsv
     end
 
     def each(&block)
-      start
-      index = parsed.index
       Enumerator.new do |yielder|
+        start
+        index = parsed.index
         loop do
           break unless yield_row(yielder, index)
           index += 1
