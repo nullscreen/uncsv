@@ -14,7 +14,7 @@ class Uncsv
   end
 
   def self.open(filename, opts = {}, &block)
-    new(File.open(filename, 'r'), opts, &block)
+    new(File.open(filename, 'rb'), opts, &block)
   end
 
   def each(&block)
