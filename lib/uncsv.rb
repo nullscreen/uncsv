@@ -5,6 +5,8 @@ require 'uncsv/rows'
 require 'csv'
 
 class Uncsv
+  include Enumerable
+
   def initialize(csv, opts = {})
     @config = Config.new(opts)
     yield @config if block_given?
