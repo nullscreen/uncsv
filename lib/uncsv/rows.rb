@@ -2,9 +2,9 @@ require 'csv'
 
 class Uncsv
   class Rows
-    def initialize(csv, config)
+    def initialize(csv, config = nil)
       @csv = csv
-      @config = config
+      @config = config || Config.new
       @started = false
       @parsed = nil
     end
@@ -35,8 +35,9 @@ class Uncsv
     def yield_row(yielder, index)
       fields = @csv.shift
       return false unless fields
-      process_fields!(fields)
-      yielder << CSV::Row.new(header, fields) unless should_skip?(fields, index)
+      unless should_skip?(fields, index)
+        yielder << Row.new(header, fields, @config)
+      end
       true
     end
 
@@ -51,15 +52,6 @@ class Uncsv
 
     def parsed
       @parsed ||= Header.parse!(@csv, @config)
-    end
-
-    def process_fields!(fields)
-      stringify_nils!(fields) unless @config.nil_empty
-      fields
-    end
-
-    def stringify_nils!(fields)
-      fields.map! { |f| f.nil? ? '' : f }
     end
   end
 end

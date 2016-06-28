@@ -1,6 +1,7 @@
 require 'uncsv/version'
 require 'uncsv/config'
 require 'uncsv/header'
+require 'uncsv/row'
 require 'uncsv/rows'
 require 'csv'
 

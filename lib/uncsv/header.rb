@@ -1,8 +1,8 @@
 class Uncsv
   class Header
-    def initialize(headers, config)
+    def initialize(headers, config = nil)
       @headers = headers
-      @config = config
+      @config = config || Config.new
       @array = nil
     end
 
