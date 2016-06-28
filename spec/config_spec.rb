@@ -27,21 +27,26 @@ RSpec.describe Uncsv::Config do
 
   it 'gets CSV options' do
     config = described_class.new(col_sep: "\t")
-    expect(config.csv_opts).to eq(col_sep: "\t")
+    expect(config.csv_opts).to eq(
+      col_sep: "\t",
+      field_size_limit: nil,
+      quote_char: '"',
+      row_sep: :auto
+    )
   end
 
-  it 'gets empty expanded_headers if false' do
+  it 'gets empty expand_headers if false' do
     config = described_class.new(expand_headers: false)
-    expect(config.expanded_headers).to eq([])
+    expect(config.expand_headers).to eq([])
   end
 
-  it 'gets all expanded_headers if false' do
+  it 'gets all expand_headers if false' do
     config = described_class.new(header_rows: [1, 2], expand_headers: true)
-    expect(config.expanded_headers).to eq([1, 2])
+    expect(config.expand_headers).to eq([1, 2])
   end
 
-  it 'gets partial expanded_headers' do
-    config = described_class.new(header_rows: [1, 2], expand_headers: [2])
-    expect(config.expanded_headers).to eq([2])
+  it 'gets partial expand_headers' do
+    config = described_class.new(header_rows: [1, 2], expand_headers: 2)
+    expect(config.expand_headers).to eq([2])
   end
 end

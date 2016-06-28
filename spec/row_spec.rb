@@ -20,7 +20,7 @@ RSpec.describe Uncsv::Row do
   end
 
   it 'gets a hash' do
-    row = described_class.new(%w(foo bar), %w(my_value other_val))
+    row = described_class.new(%w(foo bar), %w(my_value other_val third_val))
     expect(row.to_h).to eq('foo' => 'my_value', 'bar' => 'other_val')
   end
 

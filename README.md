@@ -87,12 +87,14 @@ end
   will be ignored.
 - `:header_separator`: Default `"."`. When using multiple header rows, this is
   a string used to separate the individual header fields.
+- `:nil_empty`: Default `true`. If `true`, empty cells will be set to `nil`,
+  otherwise, they are set to an empty string.
 - `:normalize_headers`: Default `false`. If set to `true`, header field text
   will be normalized. The text will be lowercased, and non-alphanumeric
   characters will be replaced with underscores (`_`). If set to a string,
   those characters will be replaced with the string instead.
-- `:nil_empty`: Default `true`. If `true`, empty cells will be set to `nil`,
-  otherwise, they are set to an empty string.
+- `:skip_blanks`: Default `false`. If `true`, rows whose fields are all empty
+  will be skipped.
 - `:skip_rows`: Default `[]`. If set to an array of row indexes, those rows
   will be skipped. This option does not apply to header rows.
 - `:unique_headers`: Default `false`. If set to `true`, headers will be forced
@@ -107,7 +109,6 @@ See the documentation for Ruby's built-in `CSV` class for the following
 options.
 
 - `:col_sep`
-- `:converters`
 - `:field_size_limit`
 - `:quote_char`
 - `:row_sep`
