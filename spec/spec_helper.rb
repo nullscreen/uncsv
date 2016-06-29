@@ -1,3 +1,6 @@
+require 'simplecov'
+SimpleCov.start if ENV['COVERAGE']
+
 require 'uncsv'
 # pp crashes if required (by rspec) after fakefs
 require 'pp'

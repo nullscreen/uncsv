@@ -120,7 +120,13 @@ After checking out the repo, run `bundle` to install dependencies. You
 can also run `bin/console` for an interactive prompt that will allow you to
 experiment.
 
-To check your work, run `bin/rake` to check code style and run the tests.
+To check your work, run `bin/rake` to check code style and run the tests. To
+generate a code coverage report, set the `COVERAGE` environment variable when
+running the tests.
+
+```sh
+COVERAGE=1 bin/rake
+```
 
 ## Contributing
 
