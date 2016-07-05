@@ -88,6 +88,16 @@ RSpec.describe Uncsv::Header do
     expect(header.to_a).to eq(%w(foo.a foo.b bar.b.0 bar.b.1 bar.b.0))
   end
 
+  it 'uniques empty headers' do
+    csv = CSV.new(",,\n,test,")
+    config = Uncsv::Config.new(
+      header_rows: [0, 1],
+      unique_headers: true
+    )
+    header = described_class.parse!(csv, config).header
+    expect(header.to_a).to eq(%w(0 test 1))
+  end
+
   it 'normalizes header keys' do
     csv = CSV.new('"Has spaces",has.dot')
     config = Uncsv::Config.new(header_rows: 0, normalize_headers: true)
@@ -114,6 +124,13 @@ RSpec.describe Uncsv::Header do
     config = Uncsv::Config.new(header_rows: [0, 1], expand_headers: true)
     header = described_class.parse!(csv, config).header
     expect(header.to_a).to eq(%w(short.this row.is row.a row.long row.row))
+  end
+
+  it 'squares blank header rows' do
+    csv = CSV.new(",,\n,,")
+    config = Uncsv::Config.new(header_rows: [0, 1], expand_headers: true)
+    header = described_class.parse!(csv, config).header
+    expect(header.to_a).to eq([nil, nil, nil])
   end
 
   it 'works with empty headers' do

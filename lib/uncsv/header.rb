@@ -83,10 +83,12 @@ class Uncsv
     def combine(headers)
       headers.each_with_object([]) do |header, combined|
         header.each_with_index do |key, index|
-          next if combined[index].nil? && key.nil?
-          combined[index] = [combined[index], key]
-            .compact
-            .join(@config.header_separator)
+          parts = [combined[index], key].compact
+          if parts.empty?
+            combined[index] = nil
+          else
+            combined[index] = parts.join(@config.header_separator)
+          end
         end
       end
     end
@@ -114,7 +116,7 @@ class Uncsv
       collate(combined).each do |key, indexes|
         next if indexes.size == 1
         indexes.each_with_index do |index, count|
-          combined[index] = [key, count].join(@config.header_separator)
+          combined[index] = [key, count].compact.join(@config.header_separator)
         end
       end
       combined
