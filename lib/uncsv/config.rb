@@ -63,7 +63,7 @@ class Uncsv
     # ignored.
     #
     # @return [Array] The header row indexes
-    attr_reader :header_rows
+    attr_accessor :header_rows
 
     # The separator between multiple header fields
     #
@@ -124,7 +124,7 @@ class Uncsv
     # will be skipped. This option does not apply to header rows.
     #
     # @return [Array] The row index to skip
-    attr_reader :skip_rows
+    attr_accessor :skip_rows
 
     # Whether to force headers to be unique
     #
