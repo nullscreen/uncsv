@@ -28,7 +28,8 @@ class Uncsv
     # @return [Array] The array of header fields
     def to_a
       @array ||= begin
-        headers = square(@headers)
+        headers = nil_empty(@headers)
+        headers = square(headers)
         headers = normalize(headers) if @config.normalize_headers
         headers = expand(headers)
         combined = combine(headers)
@@ -178,6 +179,14 @@ class Uncsv
     def square(headers)
       length = headers.map(&:size).max
       headers.map { |h| h.fill(nil, h.size, length - h.size) }
+    end
+
+    # Convert header empty strings to nil
+    #
+    # @param headers [Array<Array<String>>] An array of headers to convert
+    # @return [Array<Array<String>>] The converted headers
+    def nil_empty(headers)
+      headers.map { |h| h.map { |k| k == '' ? nil : k } }
     end
   end
 end

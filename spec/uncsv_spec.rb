@@ -60,4 +60,9 @@ RSpec.describe Uncsv do
     expect(csv.header).to eq(%w(Z Y))
     expect(csv.to_a.map(&:fields)).to eq([%w(1 2)])
   end
+
+  it 'treats quoted strings as empty' do
+    csv = described_class.new(%("","test"\n"foo","bar"), header_rows: [0, 1])
+    expect(csv.header).to eq(%w(foo test.bar))
+  end
 end
