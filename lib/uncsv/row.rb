@@ -98,6 +98,7 @@ class Uncsv
     # @return [String] The processed field
     def process(field)
       field = '' if field.nil? && !@config.nil_empty
+      field = nil if field == '' && @config.nil_empty
       field
     end
   end

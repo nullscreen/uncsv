@@ -56,4 +56,9 @@ RSpec.describe Uncsv::Row do
     row = described_class.new(%w(foo bar), %w(my_value))
     expect(row.fields).to eq(['my_value', nil])
   end
+
+  it 'can nilify strings' do
+    row = described_class.new(%w(foo), [''], Uncsv::Config.new(nil_empty: true))
+    expect(row.fields).to eq([nil])
+  end
 end
