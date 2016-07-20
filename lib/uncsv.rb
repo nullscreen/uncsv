@@ -1,5 +1,6 @@
 require 'uncsv/version'
 require 'uncsv/config'
+require 'uncsv/key_normalizer'
 require 'uncsv/header'
 require 'uncsv/row'
 require 'uncsv/rows'

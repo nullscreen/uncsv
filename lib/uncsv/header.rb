@@ -144,32 +144,9 @@ class Uncsv
     def normalize(headers)
       headers.map do |header|
         header.map do |key|
-          normalize_key(key)
+          @config.normalize_headers.normalize(key)
         end
       end
-    end
-
-    # Normalize a header key
-    #
-    # Replaces non-alphanumeric characters with underscores, then deduplicates
-    # underscores and trims them from the ends of the key. Then the key is
-    # lower-cased.
-    #
-    # @param key [String, nil] The header field to normalize
-    # @return [String, nil] The normalized header field or `nil` if the header
-    #   is not set
-    def normalize_key(key)
-      return nil if key.nil?
-      normalize_headers = @config.normalize_headers
-      separator = normalize_headers.is_a?(String) ? normalize_headers : '_'
-
-      key = key.gsub(/[^a-z0-9_]+/i, separator)
-      unless separator.empty?
-        escaped_separator = Regexp.escape(separator)
-        key.gsub!(/#{escaped_separator}{2,}/, separator)
-        key.gsub!(/^#{escaped_separator}|#{escaped_separator}$/, '')
-      end
-      key.downcase
     end
 
     # Make the headers all the same length

@@ -49,4 +49,27 @@ RSpec.describe Uncsv::Config do
     config = described_class.new(header_rows: [1, 2], expand_headers: 2)
     expect(config.expand_headers).to eq([2])
   end
+
+  it 'can set normalize_headers with a hash' do
+    config = described_class.new(
+      normalize_headers: { separator: '$', downcase: false }
+    )
+    expect(config.normalize_headers.separator).to eq('$')
+  end
+
+  it 'can set normalize_headers with a custom object' do
+    custom_normalizer = Object.new
+    config = described_class.new(normalize_headers: custom_normalizer)
+    expect(config.normalize_headers).to be(custom_normalizer)
+  end
+
+  it 'can set normalize_headers with a boolean' do
+    config = described_class.new(normalize_headers: true)
+    expect(config.normalize_headers.separator).to eq('_')
+  end
+
+  it 'can set normalize_headers with a separator' do
+    config = described_class.new(normalize_headers: '%')
+    expect(config.normalize_headers.separator).to eq('%')
+  end
 end

@@ -92,7 +92,11 @@ end
 - `:normalize_headers`: Default `false`. If set to `true`, header field text
   will be normalized. The text will be lowercased, and non-alphanumeric
   characters will be replaced with underscores (`_`). If set to a string,
-  those characters will be replaced with the string instead.
+  those characters will be replaced with the string instead. If set to a hash,
+  the hash will be treated as options to KeyNormalizer, accepting the
+  `:separator`, and `:downcase` options. If set to another object, it is
+  expected to respond to the `normalize(key)` method by returning a normalized
+  string.
 - `:skip_blanks`: Default `false`. If `true`, rows whose fields are all empty
   will be skipped.
 - `:skip_rows`: Default `[]`. If set to an array of row indexes, those rows

@@ -1,5 +1,3 @@
-require 'ostruct'
-
 class Uncsv
   # Configuration options for parsing CSVs. It is a struct-like object with
   # attribute acessors.
@@ -85,10 +83,19 @@ class Uncsv
     #
     # Default `false`. If set to `true`, header field text will be normalized.
     # The text will be lowercased, and non-alphanumeric characters will be
-    # replaced with underscores (`_`). If set to a string, those characters will
+    # replaced with underscores (`_`).
+    #
+    # If set to a string, those characters will
     # be replaced with the string instead.
     #
-    # @return [Boolean] Whether headers will be normalized.
+    # If set to a hash, the hash will be treated as options to KeyNormalizer,
+    # accepting the `:separator`, and `:downcase` options.
+    #
+    # If set to another object, it is expected to respond to the
+    # `normalize(key)` method by returning a normalized string.
+    #
+    # @see KeyNormalizer
+    # @return [KeyNormalizer, Object] The KeyNormalizer object or equivalent
     attr_accessor :normalize_headers
 
     # The character used to quote individual fields
@@ -164,6 +171,17 @@ class Uncsv
     def expand_headers=(value)
       value = [value] if value.is_a?(Integer)
       @expand_headers = value
+    end
+
+    def normalize_headers=(value)
+      if value.is_a?(Hash)
+        value = KeyNormalizer.new(value)
+      elsif value.is_a?(String)
+        value = KeyNormalizer.new(separator: value)
+      elsif value == true
+        value = KeyNormalizer.new
+      end
+      @normalize_headers = value
     end
 
     def expand_headers
