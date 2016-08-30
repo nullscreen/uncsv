@@ -5,6 +5,7 @@ require 'uncsv/header'
 require 'uncsv/row'
 require 'uncsv/rows'
 require 'csv'
+require 'ostruct'
 
 # Parses CSV data and iterates through it
 #
