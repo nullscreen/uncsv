@@ -1,3 +1,4 @@
+# rubocop:disable BlockLength
 RSpec.describe Uncsv::Config do
   it 'has defaults' do
     config = described_class.new
