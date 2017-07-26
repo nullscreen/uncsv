@@ -3,8 +3,8 @@ class Uncsv
   # attribute acessors.
   class Config
     # Options that directly map to Std-lib `CSV` options
-    CSV_OPTS = [
-      :col_sep, :row_sep, :quote_char, :field_size_limit
+    CSV_OPTS = %i[
+      col_sep row_sep quote_char field_size_limit
     ].freeze
 
     # The default values applied if an attribute's value is not specified when

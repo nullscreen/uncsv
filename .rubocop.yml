@@ -1,8 +1,8 @@
-Style/AlignParameters:
+Layout/AlignParameters:
   EnforcedStyle: with_fixed_indentation
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
 
 Style/Documentation:
   Enabled: false
-
-Style/MultilineMethodCallIndentation:
-  EnforcedStyle: indented
