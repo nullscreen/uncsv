@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.license = 'Apache-2.0'
 
   spec.summary = 'A parser for unruly CSVs'
-  spec.homepage = 'https://bitbucket.com/machinima-dev/uncsv'
+  spec.homepage = 'https://github.com/machinima/uncsv'
 
   spec.files = `git ls-files -z`
     .split("\x0")
