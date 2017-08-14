@@ -1,0 +1,33 @@
+language: ruby
+rvm:
+  - 2.3
+  - 2.4
+env:
+  - COVERAGE=1
+
+script:
+  - bin/rubocop
+  - bin/rspec --format doc
+
+# jobs:
+#   include:
+#     - stage: release
+#       rvm: 2.3
+#       script: skip
+#       deploy:
+#         provider: rubygems
+#         api_key:
+#           secure: ""
+#         gem: uncsv
+#         on:
+#           tags: true
+#           condition: bin/check-version
+#       repo: machinima/uncsv
+
+# after_success:
+#   - bin/codeclimate-test-reporter
+
+# addons:
+#   code_climate:
+#     repo_token:
+#       secure: ""
