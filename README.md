@@ -139,7 +139,7 @@ https://github.com/machinima/uncsv.
 
 ## License
 
-Copyright 2017 Warner Bros. Entertainment Inc.
+Copyright 2018 Warner Bros. Entertainment Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
