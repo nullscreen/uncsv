@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-root="$(cd "$(dirname "$0")/.." && pwd)"
 tag="$(git describe --abbrev=0)"
-version="$(ruby -r "${root}/lib/uncsv/version" -e 'puts Uncsv::VERSION')"
-test "$tag" = "v${version}"
+tag="${tag#v}"
+gt=$(ruby -r ./lib/uncsv/version -e "puts Gem::Version.new(Uncsv::VERSION) >= Gem::Version.new('${tag}')")
+test "$gt" = true
