@@ -1,5 +1,7 @@
 # Uncsv
 
+[![Build Status](https://travis-ci.org/machinima/uncsv.svg?branch=master)](https://travis-ci.org/machinima/uncsv)
+
 A parser for unruly CSVs
 
 Parse CSVs with heirarchical headers and duplicated headers. Skip lines by line
