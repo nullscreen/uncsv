@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # rubocop:disable BlockLength
 RSpec.describe Uncsv::Config do
   it 'has defaults' do

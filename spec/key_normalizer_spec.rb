@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Uncsv::KeyNormalizer do
   it 'converts non-alphanumeric characters to separator' do
     expect(described_class.new.normalize('abc-123$hello,world'))

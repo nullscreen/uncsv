@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # rubocop:disable BlockLength
 RSpec.describe Uncsv::Row do
   it 'gets a field by header' do

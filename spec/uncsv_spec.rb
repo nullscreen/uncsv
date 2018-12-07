@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # rubocop:disable BlockLength
 RSpec.describe Uncsv do
   it 'can be created from a string' do

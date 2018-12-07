@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Uncsv
   # A single data row from a CSV. Fields can be accessed by header or zero-based
   # index.
@@ -44,6 +46,7 @@ class Uncsv
     # @return [String, nil] The field value if it exists
     def [](key)
       return if key.nil?
+
       value = key.is_a?(Integer) ? @fields[key] : @map[key]
       process(value)
     end
@@ -78,6 +81,7 @@ class Uncsv
     def fetch(key, default = nil)
       value = self[key]
       return value unless value.nil?
+
       block_given? ? yield(key) : default
     end
 

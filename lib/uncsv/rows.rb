@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'csv'
 
 class Uncsv
@@ -26,6 +28,7 @@ class Uncsv
         index = parsed.index
         loop do
           break unless yield_row(yielder, index)
+
           index += 1
         end
       end.each(&block)
@@ -49,6 +52,7 @@ class Uncsv
     def should_skip?(fields, index)
       return true if @config.skip_rows[index]
       return true if @config.skip_blanks && fields.compact.empty?
+
       false
     end
 
@@ -62,6 +66,7 @@ class Uncsv
     def yield_row(yielder, index)
       fields = @csv.shift
       return false unless fields
+
       unless should_skip?(fields, index)
         yielder << Row.new(header, fields, @config)
       end

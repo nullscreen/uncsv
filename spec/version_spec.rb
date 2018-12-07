@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Uncsv do
   it 'has a cannonical version number' do
     expect(Gem::Version.new(described_class::VERSION).to_s)

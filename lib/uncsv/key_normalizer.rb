@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Uncsv
   # Normalizes strings into a consistant format
   class KeyNormalizer
