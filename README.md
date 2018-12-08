@@ -1,5 +1,6 @@
 # Uncsv
 
+[![Gem Version](https://badge.fury.io/rb/uncsv.svg)](https://badge.fury.io/rb/uncsv)
 [![Build Status](https://travis-ci.org/machinima/uncsv.svg?branch=master)](https://travis-ci.org/machinima/uncsv)
 [![Code Climate](https://codeclimate.com/github/machinima/uncsv/badges/gpa.svg)](https://codeclimate.com/github/machinima/uncsv)
 [![Test Coverage](https://codeclimate.com/github/machinima/uncsv/badges/coverage.svg)](https://codeclimate.com/github/machinima/uncsv)
