@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Uncsv
   # A parsed CSV header.
   class Header
@@ -8,7 +10,7 @@ class Uncsv
     def initialize(headers, config = nil)
       @headers = headers
       @config = config || Config.new
-      @array = nil
+      @to_a = nil
     end
 
     # Iterate over each header field
@@ -27,7 +29,7 @@ class Uncsv
     #
     # @return [Array] The array of header fields
     def to_a
-      @array ||= begin
+      @to_a ||= begin
         headers = nil_empty(@headers)
         headers = square(headers)
         headers = normalize(headers) if @config.normalize_headers
@@ -85,10 +87,10 @@ class Uncsv
       headers.each_with_object([]) do |header, combined|
         header.each_with_index do |key, index|
           parts = [combined[index], key].compact
-          if parts.empty?
-            combined[index] = nil
+          combined[index] = if parts.empty?
+            nil
           else
-            combined[index] = parts.join(@config.header_separator)
+            parts.join(@config.header_separator)
           end
         end
       end
@@ -101,6 +103,7 @@ class Uncsv
     def expand(headers)
       headers.each_with_index.map do |header, index|
         next header unless @config.expand_headers.include?(index)
+
         last = nil
         header.map do |key|
           key ? last = key : last
@@ -116,6 +119,7 @@ class Uncsv
       combined = combined.dup
       collate(combined).each do |key, indexes|
         next if indexes.size == 1
+
         indexes.each_with_index do |index, count|
           combined[index] = [key, count].compact.join(@config.header_separator)
         end

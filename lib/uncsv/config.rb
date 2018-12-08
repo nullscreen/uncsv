@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Uncsv
   # Configuration options for parsing CSVs. It is a struct-like object with
   # attribute acessors.
@@ -32,15 +34,15 @@ class Uncsv
     # @see (see #initialize)
     attr_accessor :col_sep
 
-    # Whether to fill empty headers with values from the left.
+    # @!attribute expand_headers
+    #   Whether to fill empty headers with values from the left.
     #
-    # Default `false`. If set to `true`, blank header row cells will assume the
-    # header of the row to their left. This is useful for heirarchical headers
-    # where not all the header cells are filled in. If set to an array of header
-    # indexes, only the specified headers will be expanded.
+    #   Default `false`. If set to `true`, blank header row cells will assume
+    #   the header of the row to their left. This is useful for heirarchical
+    #   headers where not all the header cells are filled in. If set to an
+    #   array of header indexes, only the specified headers will be expanded.
     #
-    # @return [Array] An array of expaned header indexes
-    attr_accessor :expand_headers
+    #   @return [Array] An array of expaned header indexes
 
     # The maximum size CSV will read ahead looking for a closing quote.
     #
@@ -61,7 +63,7 @@ class Uncsv
     # ignored.
     #
     # @return [Array] The header row indexes
-    attr_accessor :header_rows
+    attr_reader :header_rows
 
     # The separator between multiple header fields
     #
@@ -96,7 +98,7 @@ class Uncsv
     #
     # @see KeyNormalizer
     # @return [KeyNormalizer, Object] The KeyNormalizer object or equivalent
-    attr_accessor :normalize_headers
+    attr_reader :normalize_headers
 
     # The character used to quote individual fields
     #
@@ -131,7 +133,7 @@ class Uncsv
     # will be skipped. This option does not apply to header rows.
     #
     # @return [Array] The row index to skip
-    attr_accessor :skip_rows
+    attr_reader :skip_rows
 
     # Whether to force headers to be unique
     #
@@ -187,6 +189,7 @@ class Uncsv
     def expand_headers
       return header_rows if @expand_headers == true
       return [] if @expand_headers == false
+
       @expand_headers
     end
 

@@ -1,8 +1,21 @@
+---
+AllCops:
+  TargetRubyVersion: 2.3
+
+Layout/EndAlignment:
+  EnforcedStyleAlignWith: variable
+
 Layout/AlignParameters:
   EnforcedStyle: with_fixed_indentation
+
+Layout/IndentArray:
+  EnforcedStyle: consistent
+
+Layout/IndentHash:
+  EnforcedStyle: consistent
 
 Layout/MultilineMethodCallIndentation:
   EnforcedStyle: indented
 
-Style/Documentation:
+Lint/MissingCopEnableDirective:
   Enabled: false

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'uncsv/version'
 require 'uncsv/config'
 require 'uncsv/key_normalizer'
