@@ -4,11 +4,19 @@
 [![Build Status](https://travis-ci.org/machinima/uncsv.svg?branch=master)](https://travis-ci.org/machinima/uncsv)
 [![Code Climate](https://codeclimate.com/github/machinima/uncsv/badges/gpa.svg)](https://codeclimate.com/github/machinima/uncsv)
 [![Test Coverage](https://codeclimate.com/github/machinima/uncsv/badges/coverage.svg)](https://codeclimate.com/github/machinima/uncsv)
+[![Inline docs](http://inch-ci.org/github/machinima/uncsv.svg?branch=master)](http://inch-ci.org/github/machinima/uncsv)
 
 A parser for unruly CSVs
 
 Parse CSVs with heirarchical headers and duplicated headers. Skip lines by line
 number, etc.
+
+## Documentation
+
+Read below to get started, or see the [API Documentation][api-docs] for more
+details.
+
+[api-docs]: https://www.rubydoc.info/github/machinima/uncsv
 
 ## Installation
 
