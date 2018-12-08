@@ -2,5 +2,5 @@
 
 class Uncsv
   # The current Uncsv library version
-  VERSION = '0.3.1'
+  VERSION = 'v1.0.0'
 end
