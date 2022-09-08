@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# rubocop:disable BlockLength
 RSpec.describe Uncsv::Rows do
   it 'outputs data rows' do
     csv = CSV.new("1,2\n3,4")

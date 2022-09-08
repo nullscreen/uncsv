@@ -1,11 +1,22 @@
 # frozen_string_literal: true
 
-require 'simplecov'
-SimpleCov.start if ENV['COVERAGE']
+require 'byebug' if Gem.loaded_specs['byebug']
+
+if Gem.loaded_specs['simplecov'] && (ENV.fetch('COVERAGE', nil) || ENV.fetch('CI', nil))
+  require 'simplecov'
+  if ENV['CI']
+    require 'simplecov-cobertura'
+    SimpleCov.formatter = SimpleCov::Formatter::CoberturaFormatter
+  end
+
+  SimpleCov.start do
+    enable_coverage :branch
+    add_filter '/spec/'
+    add_filter '/vendor/'
+  end
+end
 
 require 'uncsv'
-# pp crashes if required (by rspec) after fakefs
-require 'pp'
 require 'fakefs/spec_helpers'
 
 RSpec.configure do |config|

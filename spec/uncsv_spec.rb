@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# rubocop:disable BlockLength
 RSpec.describe Uncsv do
   it 'can be created from a string' do
     csv = described_class.new('foo,bar')
@@ -13,7 +12,7 @@ RSpec.describe Uncsv do
   end
 
   it 'can open a file' do
-    File.open('/csv', 'w') { |f| f.write 'this,is,a,test' }
+    File.write('/csv', 'this,is,a,test')
     csv = described_class.open('/csv')
     expect(csv.to_a.map(&:fields)).to eq([%w[this is a test]])
   end
