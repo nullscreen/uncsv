@@ -9,10 +9,10 @@ Gem::Specification.new do |spec|
   spec.version = Uncsv::VERSION
   spec.authors = ['Justin Howard']
   spec.email = ['jmhoward0@gmail.com']
-  spec.license = 'Apache-2.0'
+  spec.license = 'MIT'
 
   spec.summary = 'A parser for unruly CSVs'
-  spec.homepage = 'https://github.com/machinima/uncsv'
+  spec.homepage = 'https://github.com/nullscreen/uncsv'
 
   spec.files = `git ls-files -z`
     .split("\x0")
