@@ -162,7 +162,7 @@ class Uncsv
 
     def skip_rows=(rows)
       rows = [rows] unless rows.is_a?(Array)
-      @skip_rows = Hash[rows.map { |r| [r, true] }]
+      @skip_rows = rows.map { |r| [r, true] }.to_h
     end
 
     def header_rows=(rows)
@@ -176,11 +176,12 @@ class Uncsv
     end
 
     def normalize_headers=(value)
-      if value.is_a?(Hash)
+      case value
+      when Hash
         value = KeyNormalizer.new(value)
-      elsif value.is_a?(String)
+      when String
         value = KeyNormalizer.new(separator: value)
-      elsif value == true
+      when true
         value = KeyNormalizer.new
       end
       @normalize_headers = value
@@ -198,7 +199,7 @@ class Uncsv
     # @return [Hash] A hash of the CSV options
     # @see (see #initialize)
     def csv_opts
-      Hash[CSV_OPTS.map { |k| [k, public_send(k)] }]
+      CSV_OPTS.map { |k| [k, public_send(k)] }.to_h
     end
   end
 end

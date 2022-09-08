@@ -14,17 +14,18 @@ Gem::Specification.new do |spec|
   spec.summary = 'A parser for unruly CSVs'
   spec.homepage = 'https://github.com/nullscreen/uncsv'
 
-  spec.files = `git ls-files -z`
-    .split("\x0")
-    .reject { |f| f.match(%r{^spec/}) }
+  rubydoc = 'https://www.rubydoc.info/gems'
+  spec.metadata = {
+    'changelog_uri' => "#{spec.homepage}/blob/master/CHANGELOG.md",
+    'documentation_uri' => "#{rubydoc}/#{spec.name}/#{spec.version}",
+    'rubygems_mfa_required' => 'true'
+  }
+
+  spec.files = Dir['lib/**/*.rb', '*.md', '*.txt', '.yardopts']
   spec.require_paths = ['lib']
 
-  spec.add_development_dependency 'bundler', '~> 1.12'
-  spec.add_development_dependency 'fakefs', '~> 0.8'
-  spec.add_development_dependency 'rake', '>= 10.0'
-  spec.add_development_dependency 'redcarpet', '~> 3.4'
-  spec.add_development_dependency 'rspec', '~> 3.4'
-  spec.add_development_dependency 'rubocop', '~> 0.61'
-  spec.add_development_dependency 'simplecov', '~> 0.11'
-  spec.add_development_dependency 'yard', '>= 0.9.11'
+  spec.required_ruby_version = '>= 2.3'
+
+  spec.add_development_dependency 'fakefs', '~> 1.2'
+  spec.add_development_dependency 'rspec', '~> 3.10'
 end

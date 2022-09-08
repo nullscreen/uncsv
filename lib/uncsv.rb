@@ -28,7 +28,11 @@ class Uncsv
   def initialize(data, opts = {})
     @config = Config.new(opts)
     yield @config if block_given?
-    @csv = CSV.new(data, @config.csv_opts)
+    @csv = if CSV.method(:new).arity == 2
+      CSV.new(data, @config.csv_opts)
+    else
+      CSV.new(data, **@config.csv_opts)
+    end
   end
 
   # Create a new `Uncsv` parser from a file

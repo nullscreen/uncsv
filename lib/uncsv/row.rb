@@ -33,7 +33,7 @@ class Uncsv
       @config = config || Config.new
       @header = square(header, fields.size)
       @fields = square(fields, header.size).map { |f| process(f) }
-      @map = Hash[header.zip(@fields)]
+      @map = header.zip(@fields).to_h
     end
 
     # Get a field by index or header
@@ -57,7 +57,7 @@ class Uncsv
     #
     # @return [Hash] A hash of headers to fields
     def to_h
-      Hash[@header.compact.map { |h| [h, self[h]] }]
+      @header.compact.map { |h| [h, self[h]] }.to_h
     end
 
     # Iterate over each pair of headers and fields

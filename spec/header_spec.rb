@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# rubocop:disable BlockLength
 RSpec.describe Uncsv::Header do
   it 'parses a first-row header' do
     csv = CSV.new('this,is,a,test')

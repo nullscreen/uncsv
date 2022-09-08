@@ -137,12 +137,13 @@ After checking out the repo, run `bundle` to install dependencies. You
 can also run `bin/console` for an interactive prompt that will allow you to
 experiment.
 
-To check your work, run `bin/rake` to check code style and run the tests. To
-generate a code coverage report, set the `COVERAGE` environment variable when
-running the tests.
+To check your work, run `bin/rspec` run the tests and `bin/rubocop` to check
+style. To generate a code coverage report, set the `COVERAGE` environment
+variable when running the tests.
 
 ```sh
-COVERAGE=1 bin/rake
+COVERAGE=1 bin/rspec
+bin/rubocop
 ```
 
 ## Contributing
