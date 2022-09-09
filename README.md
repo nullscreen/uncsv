@@ -1,10 +1,9 @@
 # Uncsv
 
 [![Gem Version](https://badge.fury.io/rb/uncsv.svg)](https://badge.fury.io/rb/uncsv)
-[![Build Status](https://travis-ci.org/nullscreen/uncsv.svg?branch=main)](https://travis-ci.org/nullscreen/uncsv)
-[![Code Climate](https://codeclimate.com/github/nullscreen/uncsv/badges/gpa.svg)](https://codeclimate.com/github/nullscreen/uncsv)
-[![Test Coverage](https://codeclimate.com/github/nullscreen/uncsv/badges/coverage.svg)](https://codeclimate.com/github/nullscreen/uncsv)
-[![Inline docs](http://inch-ci.org/github/nullscreen/uncsv.svg?branch=main)](http://inch-ci.org/github/nullscreen/uncsv)
+[![CI](https://github.com/nullscreen/uncsv/workflows/CI/badge.svg)](https://github.com/nullscreen/uncsv/actions?query=workflow%3ACI+branch%main)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/5c70b27a9f874f34b522c3b6589b1266)](https://www.codacy.com/gh/nullscreen/uncsv/dashboard)
+[![Code Coverage](https://codecov.io/gh/nullscreen/uncsv/branch/main/graph/badge.svg?token=PVK51XUVJB)](https://codecov.io/gh/nullscreen/uncsv)
 
 A parser for unruly CSVs
 
