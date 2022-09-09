@@ -16,7 +16,7 @@ Gem::Specification.new do |spec|
 
   rubydoc = 'https://www.rubydoc.info/gems'
   spec.metadata = {
-    'changelog_uri' => "#{spec.homepage}/blob/master/CHANGELOG.md",
+    'changelog_uri' => "#{spec.homepage}/blob/main/CHANGELOG.md",
     'documentation_uri' => "#{rubydoc}/#{spec.name}/#{spec.version}",
     'rubygems_mfa_required' => 'true'
   }
